@@ -37,21 +37,21 @@ app.get('/emojify', (req, res) => {
 app.get('/moji', (req, res) => {
 	var tag = 'heart';
 	emoji.get(`search/emoji?code_cont=${tag}`)
-	.then(data => res.json(data.data))
-	.catch(err => res.json(err));
+		.then(data => res.json(data.data))
+		.catch(err => res.json(err));
 })
 
 app.get('/analyze', (req, res) => {
 	ai.models.predict(
-		'artifai', 
-		'https://assetcdn.500px.org/assets/home/home_cover-22d4c02977bbe00636e22f9aa653bd84.jpg'
+		'artifai',
+		['https://assetcdn.500px.org/assets/home/home_cover-22d4c02977bbe00636e22f9aa653bd84.jpg']
 	)
 	.then(response => {
 		const {concepts} = response.data.outputs[0].data;
 		const tags = concepts.map(x => [x.name, x.value])
 		
 		return emoji.get('emoji?code_cont=heart');
-	}, err => res.json(err))
+	}, err => res.json(err.data))
 	.then(data => res.json(data));
 
 	// .then sentiment analysis on resulting tags
