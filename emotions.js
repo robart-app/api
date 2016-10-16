@@ -1,21 +1,4 @@
-const emotionsMap = {
-  "#f00": [
-    "angry",
-    "strong",
-    "dangerous"
-  ],
-  "#ff0": [
-    "happy",
-    "joyful",
-    "cheery"
-  ],
-  "#00f": [
-    "sentimental",
-    "moody",
-    "sad"
-  ]
-};
-
+import emotionsMap from './emotions-map';
 var nearestColor = require('nearest-color').from(colors);
 
 cont getEmotions = function(inColors) {
