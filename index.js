@@ -53,7 +53,19 @@ app.get('/analyze', (req, res) => {
 	)
 	.then(response => {
 		const {concepts} = response.data.outputs[0].data;
-		const tags = concepts.map(x => [x.name, x.value])
+		const tags = concepts.map(x => `${x.name}`/*,${x.value}`*/)
+
+		// pass through embed.js
+
+		// ???
+		emotional.load(() => {
+			let results = emotional.get(tags.join(' '));
+			console.log(results);
+			return results;
+		});
+
+
+
 		return tags;
 		// return emoji.get('emoji?code_cont=heart');
 	}, err => res.json(err.data))
