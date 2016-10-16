@@ -1,4 +1,4 @@
-const emotions = {
+const emotions = [
   "The {{ noun }} exhibits a strong {{ adjective }}",
   "The {{ adjective }} and {{ adjective }} Apollo and Daphne",
   "There are trademark {{ adjective }} features contribute to a {{ adjective }} yet {{ adjective }} image:",
@@ -23,10 +23,28 @@ const emotions = {
   "The elegant {{ noun }} and the {{ noun }} complete the picture.",
   "This line assumes symbolic meaning.",
   "In one way or another, all of these factors are involved in the (future) proceedings.",
-  "One possible interpretation would posit that the language used to write the {{ adjective }} is the metaphysical carrier of the knowledge unduly obtained from that same tree, thus linking the depicted event with the legendary {{ noun }}."
-};
+  "One possible interpretation would posit that the language used to write the {{ adjective }} is the metaphysical carrier of the knowledge unduly obtained from that same tree, thus linking the depicted event with the legendary {{ noun }}.",
+  "You can say it is a {{ noun }} on a lollipop.",
+  "The building feels like a {{ noun }} in which the art of architecture imposes {{ adjective }}",
+  "Its a threat to the {{ noun }} and splashed about in the waters of {{ adjective }}, the building is the icon of a {{ adjective }} group of Stylists, that were trying to force the viewer to accept this time of architecture.",
+  "It might be {{ adjective }}, {{ adjective }}, {{ adjective }}, {{ adjective }}, {{ adjective }}, and destructive of {{ noun }}, as well as the viewers themselves.",
+  "What it has in size, it lacks in distinction. Its character is aggrandized {{ adjective }}. It is an embarrassment to have it stand as a {{ noun }} before the nation and the world.",
+  "The building is a national {{ adjective }}. It is a cross between a concrete {{ adjective }} box and a marble {{ adjective }} in which the art of architecture lies buried.",
+  "I see some shocking things, modern architecture sunk, a riot of {{ nouns }}, lacking any sense of {{ adjective }} toward either the occupant or his customers.",
+  "Such works are born of a spirit devoid of all decency and of all responsibility to human needs.",
+  "It is the spirit of decorativeness, something diametrically opposed to the {{ adjective }} which animates architecture, which is the art of the {{ noun }}, the social art above all others.",
+  "Bunker or {{ noun }}, lacking only {{ noun }} emplacements or a sign telling it a {{ noun }}.",
+  "The essential factors of aesthetic strength and provocative vitality that make genuine {{ adjective }} {{ adjective }} and rewarding style. Its mass is not so much aggressive or overpowering as merely leaden.",
+  "I also stormed out of this web-server in a huff when I saw it because it was so obviously derived from a German architect that I cannot name.",
+  "The fact that the designer managed to wrap construction first made matters {{ adjective }}. The vision lacked the intellectual rigor and exquisite detailing that were so critical to Mies's genius and wrote that the I-beams at the corners of the work are clumsily detailed—especially disconcerting in a work of such {{ adjective }}.",
+  "Civilizations are marked by their {{ nouns }}, and ours are too given over to prisons, malls, and McMansions and too little to good housing for all. Maybe this is a good to start to realize our {{ adjective }}.",
+  "Complete with {{ nouns }}, {{ adjective }}, {{ adjective }}, structures of succor.",
+  "We—and our architecture—should be smarter than this, beginning with clearly knowing the limits of our intelligence and who it truly serves.",
+  "Thrilling for the massive scale of the construction of clean and spacious {{ nouns }} and for the tentacles of glistening infrastructure that spread in all directions.",
+  "Depressing for the monstrous {{ adjective }}, the repression, the cut corners, the dumb worship of {{ adjective }}, and the environment it lies in."
+];
 
-const descriptions = {
+const descriptions = [
   "The artist is a genre painter working with {{noun}}, which he applies on canvases or panels reaching between 10-20 inches (50 centimeters) in height and a similar range in width. The subject matter usually involves his {{ adjective }} place of mental residence, {{ noun }}.",
   "The artist exhibits his work on his blog, as well as several local and online galleries. This review focuses on the artist’s depictions of different {{ nouns }} and {{ nouns }}.",
   "The artist fauna paintings register psychological {{ adjective }} marked with {{ adjective }} and an underlying humorous streak. With the precision of an insightful observer, the artist recreates the subtle gestures of his subjects, capturing their essence and personality.",
@@ -39,8 +57,20 @@ const descriptions = {
   "Diagonals are not the only device employed to signal movement. Thick, rich, smeared strokes of vibrant color impart a sense of motion and progression through water and sand. The inconstant, varied texture of the brushwork, combined with the seemingly random scattering of color, becomes a powerful method of light representation. Where this quality peaks, the style of the paintings approximates impressionism.",
   "The abundance of light – obvious to a painter living so close to a large body of water, a natural mirror and refractor of the sun’s rays – shows the environment at its busiest, liveliest moments. Using a brilliant white tone, Rick Nilson sprays light over everything, flooding the paintings with spontaneous, seemingly infinite energy. The animals materialize within that flux, restating life at its most immediate and invigorating.",
   "The first thing I noticed when browsing through the works. In {{ nouns }} it was people against the walls; here, at sea, it is the {{ nouns }}. But perhaps the artist takes the contrast up a notch, to a level where it mutates into a real clash: that of the sea and the land and that of living on a constant move and in a permanent dwelling placed on the ground. Planes of bright single hue, which formed the walls in the town, stream down into the see and break down into shimmering reflections.",
-  "Appropriately, the viewing angle positions the observer just on the brink of the two {{ elements }}, maybe with an in"
-}
+  "Appropriately, the viewing angle positions the observer just on the brink of the two {{ noun }}, maybe with an in",
+  "The exhibition is devoted to the relationship between {{ noun }} and architecture. “{{ noun }} as Art” aims to create a very special form of “encroachment” – at least in as far as architecture is concerned – with its presentation space arranged in such a way as to convey an understanding of architecture as an artistic event.",
+  "In the {{ noun }} building its works is specially created for the exhibition are arranged to form a sort of atlas, illustrating the themes and {{ noun }} involved in the new responsibilities of architecture in the twenty-first century.",
+  "The {{ noun }}, at once the draft of an archive and the outline of a {{ adjective }}, appears in an arrangement of objects in the unified space of a parterre, alluding to the beginning of new actions and ways of being.",
+  "This mapping, which as a matter of principle excludes any hierarchy, centre or order of significance, reflects the desire to offer an open interpretation of {{ noun}}.",
+  "The utopia of the exhibition is to consider a possible field of {{ adjective }}, extolling the principle of diversity as an open system that can be freely and infinitely accessed by all.",
+  "Experimentation breathes new life into {{ noun }}, as it expands its range of action and pushes the boundaries of the {{ noun }}.",
+  "A perfect example?of this is presented by the decorative richness that can be seen in Abet’s collection of laminates in which, working in partnership with Karim Rashid, they have achieved a tangible synthesis between art and design.",
+  "The exposure makes the flat very bright and all the openings to the outside enjoy a beautiful panorama suggesting deep {{ adjective}}.",
+  "The idea behind the project is the desire to not use {{ noun }} but it shows.",
+  "The layout is fabricated from a deconstructed {{ noun }} and seems at first to be a genuine {{ noun }}, but is in fact a scaled-down structure consisting {{ nouns }} up from behind with scaffolding."
+];
 
-export emotions;
-export descriptions;
+module.exports = {
+  emotions,
+  descriptions
+};

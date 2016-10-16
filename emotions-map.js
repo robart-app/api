@@ -1,5 +1,5 @@
 const emotionsMap = {
- "#2773B1": [
+ color1: [
    "reliable",
    "responsible",
    "soothing",
@@ -10,14 +10,14 @@ const emotionsMap = {
    "cold",
    "fearful"
  ],
- "#26AEBB": [
+ color2: [
    "jeweled",
    "healing",
    "protective",
    "envious",
    "feminine"
  ],
- "#198F5E": [
+ color3: [
    "envirimental",
    "valuable",
    "new",
@@ -27,7 +27,7 @@ const emotionsMap = {
    "jealous",
    "guilty"
  ],
- "#F0E535": [
+ color4: [
    "bright",
    "sunny",
    "energetic",
@@ -37,7 +37,7 @@ const emotionsMap = {
    "irresponsible",
    "unstable"
  ],
- "#6C3C8A": [
+ color5: [
    "royal",
    "mobile",
    "pious",
@@ -48,17 +48,17 @@ const emotionsMap = {
    "nocturne",
    "moody",
  ],
- "#C1227E": [
+ color6: [
    "healthy",
    "happy",
    "sweet",
    "compassionate",
-   "playful"
+   "playful",
    "weak",
    "fleshlike",
    "immature",
  ],
- "#E2282F": [
+ color7: [
    "angry",
    "strong",
    "dangerous",
@@ -68,7 +68,7 @@ const emotionsMap = {
    "dangerous",
    "cautious"
  ],
- "#E76130": [
+ color8: [
    "couragious",
    "actionable",
    "confident",
@@ -77,7 +77,7 @@ const emotionsMap = {
    "ignornt",
    "sluggy",
  ],
- "#966939": [
+ color9: [
    "trustable",
    "dependable",
    "sad",
@@ -86,7 +86,7 @@ const emotionsMap = {
    "dogmatic",
    "conservative"
  ],
- "#EFC99E": [
+ color10: [
    "flexible",
    "crisp",
    "calm",
@@ -94,7 +94,7 @@ const emotionsMap = {
    "boring",
    "conservative"
  ],
- "#C99B38": [
+ color11: [
    "wealthy",
    "wise",
    "prosperous",
@@ -102,7 +102,7 @@ const emotionsMap = {
    "traditional",
    "egotistical"
  ],
- "#99989D": [
+ color12: [
    "glamourous",
    "high-tech",
    "graceful",
@@ -112,7 +112,7 @@ const emotionsMap = {
    "modern",
    "non-committal"
  ],
- "#FFFFFF": [
+ color13: [
    "clean",
    "blank",
    "pure",
@@ -122,7 +122,7 @@ const emotionsMap = {
    "pristine",
    "empty"
  ],
- "#4D4B4C": [
+ color14: [
    "secure",
    "reliable",
    "intelligent",
@@ -131,7 +131,7 @@ const emotionsMap = {
    "sad",
    "industrial",
  ],
- "#000000": [
+ color15: [
    "protective",
    "elegant",
    "dramatic",
@@ -140,5 +140,7 @@ const emotionsMap = {
    "dealth-like",
    "evil",
    "mysterious"
- ],
+ ]
 };
+
+module.exports = emotionsMap;

@@ -44,7 +44,7 @@ app.get('/moji', (req, res) => {
 });
 
 app.post('/analyze', (req, res) => {
-	const url = req.body.img
+	const url = req.body.img;
 	processor
 		.robart(req.body.img)
 		.then(category => {
@@ -56,8 +56,8 @@ app.post('/analyze', (req, res) => {
 				.then(colors => Object.assign({url}, catTags, {colors}))
 		})
 		.then(data => {
+			console.log(data);
 			const critique =  processor.sentencer(data.tags);
-			console.log(data, critique);
 			return Object.assign({data}, {critique});
 		})
 		.then(data => res.json(data));
