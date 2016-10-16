@@ -1,4 +1,4 @@
-const emotions = {
+const emotions = [
   "The {{ noun }} exhibits a strong {{ adjective }}",
   "The {{ adjective }} and {{ adjective }} Apollo and Daphne",
   "There are trademark {{ adjective }} features contribute to a {{ adjective }} yet {{ adjective }} image:",
@@ -24,9 +24,9 @@ const emotions = {
   "This line assumes symbolic meaning.",
   "In one way or another, all of these factors are involved in the (future) proceedings.",
   "One possible interpretation would posit that the language used to write the {{ adjective }} is the metaphysical carrier of the knowledge unduly obtained from that same tree, thus linking the depicted event with the legendary {{ noun }}."
-};
+];
 
-const descriptions = {
+const descriptions = [
   "The artist is a genre painter working with {{noun}}, which he applies on canvases or panels reaching between 10-20 inches (50 centimeters) in height and a similar range in width. The subject matter usually involves his {{ adjective }} place of mental residence, {{ noun }}.",
   "The artist exhibits his work on his blog, as well as several local and online galleries. This review focuses on the artist’s depictions of different {{ nouns }} and {{ nouns }}.",
   "The artist fauna paintings register psychological {{ adjective }} marked with {{ adjective }} and an underlying humorous streak. With the precision of an insightful observer, the artist recreates the subtle gestures of his subjects, capturing their essence and personality.",
@@ -40,7 +40,7 @@ const descriptions = {
   "The abundance of light – obvious to a painter living so close to a large body of water, a natural mirror and refractor of the sun’s rays – shows the environment at its busiest, liveliest moments. Using a brilliant white tone, Rick Nilson sprays light over everything, flooding the paintings with spontaneous, seemingly infinite energy. The animals materialize within that flux, restating life at its most immediate and invigorating.",
   "The first thing I noticed when browsing through the works. In {{ nouns }} it was people against the walls; here, at sea, it is the {{ nouns }}. But perhaps the artist takes the contrast up a notch, to a level where it mutates into a real clash: that of the sea and the land and that of living on a constant move and in a permanent dwelling placed on the ground. Planes of bright single hue, which formed the walls in the town, stream down into the see and break down into shimmering reflections.",
   "Appropriately, the viewing angle positions the observer just on the brink of the two {{ elements }}, maybe with an in"
-}
+];
 
-export emotions;
-export descriptions;
+module.exports = emotions;
+module.exports = descriptions;

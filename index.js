@@ -55,7 +55,6 @@ app.post('/analyze', (req, res) => {
 		})
 		.then(data => {
 			const critique =  processor.sentencer(data.tags);
-			console.log(data, critique);
 			return Object.assign({data}, {critique});
 		})
 		.then(data => res.json(data));

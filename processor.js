@@ -6,6 +6,8 @@ const CLIENT_ID = 'XXOigcQo38GxmHDtL9cuebNF7bMUd0lvest6UA3d';
 const CLIENT_SECRET = 'siJKxg5bqy3HnddttByFCJxRkLBkbu_VyKYqVO_O';
 const {GENERAL_MODEL, COLOR_MODEL} = clarifai;
 const ai  = new clarifai.App(CLIENT_ID, CLIENT_SECRET);
+const templates = require('./templates');
+const emotion = require('./emotions');
 
 const processor = {
 	robart: (url) => {  //obtains image categor
@@ -33,17 +35,21 @@ const processor = {
 			}, err => []);
 	},
 	sentencer: (words, cb) => {
-		const template = 'hello, {{ noun }} I am an {{ adjective }} {{ noun }}.';
+		console.log(words.length)
 		const tagger = new pos.Tagger();
 		const tags = tagger.tag(words);
 
 		var nounList = tags.filter(t => t[1] === 'NN').map(t => t[0]);
 		var adjectiveList = tags.filter(t => t[1] === 'JJ').map(t => t[0]);
 	
-		console.log('creating sentece');
         sentencer.configure({nounList, adjectiveList});
-        let sentence = sentencer.make(template);
-
+        console.log('configured parser')
+        let random = Math.floor(Math.random() * templates.descriptions.length);
+        console.log('random: ', random, templates.description.length)
+        let sentence = templates.description[random];
+    	
+    	console.log(`parsing ${sentence}`);
+        sentence.includes('{{') && sentencer.make(templates.descriptions[random]);
         console.log(sentence);
         return {
         	title: `${adjectiveList[0]} ${nounList[0]}`,
