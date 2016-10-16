@@ -1,6 +1,7 @@
 const axios = require('axios');
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const emotional = require('emotional');
 const processor = require('./processor');
 
@@ -18,6 +19,7 @@ const translate = axios.create({
 });
 
 app.use(bodyParser.json());
+app.use(cors());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/emojify', (req, res) => {
