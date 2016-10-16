@@ -1,6 +1,9 @@
+const axios = require('axios');
 const express = require('express');
 const clarifai = require('clarifai');
-const axios = require('axios');
+const bodyParser = require('body-parser');
+const emotional = require('emotional');
+
 const CLIENT_ID = 'XXOigcQo38GxmHDtL9cuebNF7bMUd0lvest6UA3d';
 const CLIENT_SECRET = 'siJKxg5bqy3HnddttByFCJxRkLBkbu_VyKYqVO_O';
 
@@ -17,6 +20,8 @@ const translate = axios.create({
 	baseURL: 'http://emojitranslate.com/',
 	timeout: 10000
 });
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/emojify', (req, res) => {
 	const sentence = '2 girls and one cup';
@@ -39,18 +44,18 @@ app.get('/moji', (req, res) => {
 	emoji.get(`search/emoji?code_cont=${tag}`)
 		.then(data => res.json(data.data))
 		.catch(err => res.json(err));
-})
+});
 
 app.get('/analyze', (req, res) => {
 	ai.models.predict(
-		'artifai',
-		['https://assetcdn.500px.org/assets/home/home_cover-22d4c02977bbe00636e22f9aa653bd84.jpg']
+		clarifai.GENERAL_MODEL,
+		'https://assetcdn.500px.org/assets/home/home_cover-22d4c02977bbe00636e22f9aa653bd84.jpg'
 	)
 	.then(response => {
 		const {concepts} = response.data.outputs[0].data;
 		const tags = concepts.map(x => [x.name, x.value])
-		
-		return emoji.get('emoji?code_cont=heart');
+		return tags;
+		// return emoji.get('emoji?code_cont=heart');
 	}, err => res.json(err.data))
 	.then(data => res.json(data));
 

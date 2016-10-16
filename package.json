@@ -10,8 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.1",
-    "aylien_textapi": "^0.6.0",
+    "body-parser": "^1.15.2",
     "clarifai": "^2.0.9",
+    "emotional": "0.0.3",
     "express": "^4.14.0"
   }
 }
