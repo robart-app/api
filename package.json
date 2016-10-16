@@ -14,6 +14,8 @@
     "clarifai": "^2.0.9",
     "emotional": "0.0.3",
     "express": "^4.14.0",
+    "pos": "^0.4.2",
+    "sentencer": "^0.1.5",
     "nearest-color": "^0.4.0"
   }
 }
