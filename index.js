@@ -1,22 +1,9 @@
 const axios = require('axios');
-// const embed = require('embed-js');
 const express = require('express');
-const clarifai = require('clarifai');
 const bodyParser = require('body-parser');
 const emotional = require('emotional');
-
 const processor = require('./processor');
 
-const MODEL_ID = 'b4424598a08543b181c0393e697e8fd6';
-const CLIENT_ID = 'XXOigcQo38GxmHDtL9cuebNF7bMUd0lvest6UA3d';
-const CLIENT_SECRET = 'siJKxg5bqy3HnddttByFCJxRkLBkbu_VyKYqVO_O';
-
-const {
-	GENERAL_MODEL,
-	COLOR_MODEL
-} = clarifai;
-
-const ai  = new clarifai.App(CLIENT_ID, CLIENT_SECRET);
 const app = express();
 const PORT = 3000;
 
@@ -57,7 +44,7 @@ app.get('/moji', (req, res) => {
 app.post('/analyze', (req, res) => {
 	processor
 		.robart(req.body.img)
-		
+
 		.then(data => res.json(data));
 });
 
