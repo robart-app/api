@@ -1,11 +1,20 @@
 const axios = require('axios');
+// const embed = require('embed-js');
 const express = require('express');
 const clarifai = require('clarifai');
 const bodyParser = require('body-parser');
 const emotional = require('emotional');
 
+const processor = require('./processor');
+
+const MODEL_ID = 'b4424598a08543b181c0393e697e8fd6';
 const CLIENT_ID = 'XXOigcQo38GxmHDtL9cuebNF7bMUd0lvest6UA3d';
 const CLIENT_SECRET = 'siJKxg5bqy3HnddttByFCJxRkLBkbu_VyKYqVO_O';
+
+const {
+	GENERAL_MODEL,
+	COLOR_MODEL
+} = clarifai;
 
 const ai  = new clarifai.App(CLIENT_ID, CLIENT_SECRET);
 const app = express();
@@ -21,6 +30,7 @@ const translate = axios.create({
 	timeout: 10000
 });
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/emojify', (req, res) => {
@@ -46,30 +56,24 @@ app.get('/moji', (req, res) => {
 		.catch(err => res.json(err));
 });
 
-app.get('/analyze', (req, res) => {
-	ai.models.predict(
-		clarifai.GENERAL_MODEL,
-		'https://assetcdn.500px.org/assets/home/home_cover-22d4c02977bbe00636e22f9aa653bd84.jpg'
-	)
-	.then(response => {
-		const {concepts} = response.data.outputs[0].data;
-		const tags = concepts.map(x => `${x.name}`/*,${x.value}`*/)
+app.post('/analyze', (req, res) => {
+	// ai.models.predict(
+	// 	MODEL_ID,
+	// 	req.body.img
+	// )
+	// .then(response => {
+	// 	const {concepts} = response.data.outputs[0].data;
+	// 	const tags = concepts.map(x => `${x.name},${x.value}`);
+	// 	// pass through embed.js
+	// 	return tags;
+	// 	// return emoji.get('emoji?code_cont=heart');
+	// }, err => res.json(err.data))
+	// .then(catergory => {
 
-		// pass through embed.js
-
-		// ???
-		emotional.load(() => {
-			let results = emotional.get(tags.join(' '));
-			console.log(results);
-			return results;
-		});
-
-
-
-		return tags;
-		// return emoji.get('emoji?code_cont=heart');
-	}, err => res.json(err.data))
-	.then(data => res.json(data));
+	// })
+	var tags = processor
+		.robart(req.body.img)
+			.then(data => res.json(data));
 
 	// .then sentiment analysis on resulting tags
 
