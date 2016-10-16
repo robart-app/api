@@ -1,26 +1,20 @@
-var colors = {
-  red: '#f00',
-  yellow: '#ff0',
-  blue: '#00f'
-};
-
-const emotions = {
-  "red": [
+const emotionsMap = {
+  "#f00": [
     "angry",
     "strong",
     "dangerous"
   ],
-  "yellow": [
+  "#ff0": [
     "happy",
     "joyful",
     "cheery"
   ],
-  "blue": [
+  "#00f": [
     "sentimental",
     "moody",
     "sad"
   ]
-}
+};
 
 var nearestColor = require('nearest-color').from(colors);
 
@@ -28,10 +22,10 @@ cont getEmotions = function(inColors) {
   let colorEmotions = []
   inColors.map((inColor) => {
     var moodColor = nearestColor(inColor);
-    var index = Math.floor(Math.random() * emotions[moodColor].length;
-    var index2 = (Math.floor(Math.random() * emotions[moodColor].length + 1) % emotions[moodColor].length;
-    colorEmotions.push(emotions[moodColor][index]);
-    colorEmotions.push(emotions[moodColor][index2]);
+    var index = Math.floor(Math.random() * emotionsMap[moodColor].length;
+    var index2 = (Math.floor(Math.random() * emotionsMap[moodColor].length + 1) % emotionsMap[moodColor].length;
+    colorEmotions.push(emotionsMap[moodColor][index]);
+    colorEmotions.push(emotionsMap[moodColor][index2]);
   });
   return colorEmotions;
 }
