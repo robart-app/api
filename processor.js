@@ -13,23 +13,26 @@ const processor = {
 		return ai.models.predict(MODEL_ID, url)
 			.then(response => {
 				const {concepts} = response.data.outputs[0].data;
-				const tags = concepts.map(x => [x.name, x.value]);
-				return {url, tags};
+				// const tags = concepts.map(x => [x.name, x.value]);
+				return {category: concepts[0]};
 			}, err => []);
 	},
 	general: (url) => {
 		return ai.models
-			.predict(COLOR_MODEL, url)
+			.predict(GENERAL_MODEL, url)
 			.then(response => {
 				const {concepts} = response.data.outputs[0].data;
-				const tags = concepts.map(x => `${x.name},${x.value}`);
-				// pass through embed.js
-
-				return {url,tags};
-				// return emoji.get('emoji?code_cont=heart');
-			}, err => res.json(err.data))
+				const tags = concepts.map(x => x.name);
+				return tags;
+			}, err => [])
 	},
-	color: (url) => {}
+	color: (url) => {
+		return ai.models.predict(COLOR_MODEL, url)
+			.then(response => {
+				const {colors} = response.data.outputs[0].data;
+				return colors.map(c => c.w3c);
+			}, err => [])
+	}
 };
 
 module.exports = processor;
