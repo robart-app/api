@@ -42,5 +42,7 @@ const descriptions = [
   "Appropriately, the viewing angle positions the observer just on the brink of the two {{ elements }}, maybe with an in"
 ];
 
-module.exports = emotions;
-module.exports = descriptions;
+module.exports = {
+  emotions,
+  descriptions
+};

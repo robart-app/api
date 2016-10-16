@@ -31,25 +31,29 @@ const processor = {
 		return ai.models.predict(COLOR_MODEL, url)
 			.then(response => {
 				const {colors} = response.data.outputs[0].data;
-				return colors.map(c => c.w3c);
+				const emotions = emotion(colors.map(c => c.raw_hex));
+				return {
+					colors: colors.map(c => c.w3c),
+					emotions
+				};
 			}, err => []);
 	},
 	sentencer: (words, cb) => {
-		console.log(words.length)
 		const tagger = new pos.Tagger();
 		const tags = tagger.tag(words);
 
 		var nounList = tags.filter(t => t[1] === 'NN').map(t => t[0]);
 		var adjectiveList = tags.filter(t => t[1] === 'JJ').map(t => t[0]);
-	
+		var template_size = templates.descriptions.length;
         sentencer.configure({nounList, adjectiveList});
-        console.log('configured parser')
-        let random = Math.floor(Math.random() * templates.descriptions.length);
-        console.log('random: ', random, templates.description.length)
-        let sentence = templates.description[random];
+
+        console.log('configured parser', template_size)
+        let random = Math.floor(Math.random() * template_size);
+        console.log('random x of y: ', random, template_size);
+        let sentence = templates.descriptions[random];
     	
     	console.log(`parsing ${sentence}`);
-        sentence.includes('{{') && sentencer.make(templates.descriptions[random]);
+        sentence = sentence.includes('{{') && sentencer.make(templates.descriptions[random]) || sentence;
         console.log(sentence);
         return {
         	title: `${adjectiveList[0]} ${nounList[0]}`,
