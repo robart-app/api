@@ -14,18 +14,18 @@ const processor = {
 			.then(response => {
 				const {concepts} = response.data.outputs[0].data;
 				const tags = concepts.map(x => [x.name, x.value]);
-				return tags;
+				return {url, tags};
 			}, err => []);
 	},
 	general: (url) => {
-		ai.models
+		return ai.models
 			.predict(COLOR_MODEL, url)
 			.then(response => {
 				const {concepts} = response.data.outputs[0].data;
 				const tags = concepts.map(x => `${x.name},${x.value}`);
 				// pass through embed.js
 
-				return tags;
+				return {url,tags};
 				// return emoji.get('emoji?code_cont=heart');
 			}, err => res.json(err.data))
 	},

@@ -34,14 +34,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/emojify', (req, res) => {
-	const sentence = '2 girls and one cup';
-
 	translate
 		.post('api', {
 			jezyk_s:'en',
 			jezyk_na:'en-x-emoji',
 			emoji_options:'-emoji_s_0-',
-			emoji_slova: sentence,
+			emoji_slova: req.body.sentence,
 			emoji_kluc:'mryazm.ey',
 			content_language:'en'
 		})
@@ -57,26 +55,10 @@ app.get('/moji', (req, res) => {
 });
 
 app.post('/analyze', (req, res) => {
-	// ai.models.predict(
-	// 	MODEL_ID,
-	// 	req.body.img
-	// )
-	// .then(response => {
-	// 	const {concepts} = response.data.outputs[0].data;
-	// 	const tags = concepts.map(x => `${x.name},${x.value}`);
-	// 	// pass through embed.js
-	// 	return tags;
-	// 	// return emoji.get('emoji?code_cont=heart');
-	// }, err => res.json(err.data))
-	// .then(catergory => {
-
-	// })
-	var tags = processor
+	processor
 		.robart(req.body.img)
-			.then(data => res.json(data));
-
-	// .then sentiment analysis on resulting tags
-
+		
+		.then(data => res.json(data));
 });
 
 app.listen(PORT, () => console.log(`App running on port: ${PORT}`));
