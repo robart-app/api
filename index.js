@@ -53,6 +53,11 @@ app.post('/analyze', (req, res) => {
 			return processor.color(url)
 				.then(colors => Object.assign({url}, catTags, {colors}))
 		})
+		.then(data => {
+			const critique =  processor.sentencer(data.tags);
+			console.log(data, critique);
+			return Object.assign({data}, {critique});
+		})
 		.then(data => res.json(data));
 });
 

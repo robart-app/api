@@ -1,11 +1,10 @@
+const pos = require('pos');//require('wordpos');
+const sentencer = require('sentencer');
 const clarifai = require('clarifai');
 const MODEL_ID = 'b4424598a08543b181c0393e697e8fd6';
 const CLIENT_ID = 'XXOigcQo38GxmHDtL9cuebNF7bMUd0lvest6UA3d';
 const CLIENT_SECRET = 'siJKxg5bqy3HnddttByFCJxRkLBkbu_VyKYqVO_O';
-const {
-	GENERAL_MODEL,
-	COLOR_MODEL
-} = clarifai;
+const {GENERAL_MODEL, COLOR_MODEL} = clarifai;
 const ai  = new clarifai.App(CLIENT_ID, CLIENT_SECRET);
 
 const processor = {
@@ -13,7 +12,6 @@ const processor = {
 		return ai.models.predict(MODEL_ID, url)
 			.then(response => {
 				const {concepts} = response.data.outputs[0].data;
-				// const tags = concepts.map(x => [x.name, x.value]);
 				return {category: concepts[0]};
 			}, err => []);
 	},
@@ -23,15 +21,34 @@ const processor = {
 			.then(response => {
 				const {concepts} = response.data.outputs[0].data;
 				const tags = concepts.map(x => x.name);
+				tags.shift();
 				return tags;
-			}, err => [])
+			}, err => []);
 	},
 	color: (url) => {
 		return ai.models.predict(COLOR_MODEL, url)
 			.then(response => {
 				const {colors} = response.data.outputs[0].data;
 				return colors.map(c => c.w3c);
-			}, err => [])
+			}, err => []);
+	},
+	sentencer: (words, cb) => {
+		const template = 'hello, {{ noun }} I am an {{ adjective }} {{ noun }}.';
+		const tagger = new pos.Tagger();
+		const tags = tagger.tag(words);
+
+		var nounList = tags.filter(t => t[1] === 'NN').map(t => t[0]);
+		var adjectiveList = tags.filter(t => t[1] === 'JJ').map(t => t[0]);
+	
+		console.log('creating sentece');
+        sentencer.configure({nounList, adjectiveList});
+        let sentence = sentencer.make(template);
+
+        console.log(sentence);
+        return {
+        	title: `${adjectiveList[0]} ${nounList[0]}`,
+        	sentence
+        };
 	}
 };
 
